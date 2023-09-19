@@ -1,0 +1,1 @@
+auth requisite pam_code_auth.so

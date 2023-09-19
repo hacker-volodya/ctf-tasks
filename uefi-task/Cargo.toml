@@ -1,0 +1,19 @@
+[package]
+name = "uefi-task"
+version = "0.1.0"
+authors = ["Vladimir Lebedev <d3fl4t3@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+uefi = "0.11.0"
+rlibc = "1.0.0"
+crc = "2.0.0"
+
+[build-dependencies]
+crc = "2.0.0"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"

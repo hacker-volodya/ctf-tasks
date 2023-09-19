@@ -1,0 +1,12 @@
+version: '2'
+services:
+  flask:
+    build: .
+    ports:
+     - 1337:80
+    volumes:
+     - secrets.py:/usr/src/app/secrets.py:ro
+    depends_on:
+     - db
+  db:
+    image: rethinkdb

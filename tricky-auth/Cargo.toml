@@ -1,0 +1,15 @@
+[package]
+name = "pam"
+version = "0.1.0"
+authors = []
+edition = "2018"
+
+[dependencies]
+pamsm = { version = "0.5.0", features = ["libpam"] }
+seccomp = { git = "https://github.com/polachok/seccomp" }
+hex = "0.4.3"
+libc = "0.2.97"
+
+[lib]
+name = "pam_code_auth"
+crate-type = ["cdylib"]

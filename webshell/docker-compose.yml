@@ -1,0 +1,17 @@
+version: '2.2'
+services:
+  app:
+    image: $CI_REGISTRY_IMAGE:latest
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.webshell.rule=HostRegexp(`webshell.vulns.vladimirlebe.dev`)"
+    stop_grace_period: 3s  # сколько времени пройдёт между запросом на остановку сервиса и жёстким его убийством через SIGKILL
+    mem_limit: 1G  # лимит оперативки (не считая своп)
+    memswap_limit: 1G  # общий лимит оперативка + своп
+    cpu_count: 1  # сколько ядер может использовать сервис
+    pids_limit: 128  # сколько процессов может спавнить сервис (защищает от форкбомб!)
+    ulimits:
+      nofile:  # сколько файловых дескрипторов может открыть сервис
+        soft: 8192
+        hard: 8192
+    restart: always  # всегда поднимать упавший сервис
